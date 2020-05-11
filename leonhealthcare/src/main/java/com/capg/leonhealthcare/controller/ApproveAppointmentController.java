@@ -30,14 +30,7 @@ public class ApproveAppointmentController {
     public List<User> getUserById(@PathVariable String id) {
         return approveAppointmentService.getUserById(id);
     }
-//	@GetMapping("/test")
-//    public List<Test> getTest() {
-//        return approveAppointmentService.getTest();
-//    }
-//	@GetMapping("/test/{id}")
-//    public List<Test> getTestById(@PathVariable String id) {
-//        return approveAppointmentService.getTestById(id);
-//    }
+
 	@RequestMapping("/appointment")
     public List<Appointment> getAppointment() {
         return approveAppointmentService.getAppointment();
@@ -46,15 +39,6 @@ public class ApproveAppointmentController {
     public List<Appointment> getAppointmentById(@PathVariable BigInteger id) {
         return approveAppointmentService.getAppointmentById(id);
     }
-//	@RequestMapping("/center")
-//    public List<DiagnosticCenter> getgetDiagnosticCenter() {
-//        return approveAppointmentService.getDiagnosticCenter();
-//    }
-//	@RequestMapping("/center/{id}")
-//    public List<DiagnosticCenter> getDiagnosticCenterById(@PathVariable String id) {
-//        return approveAppointmentService.getDiagnosticCenterById(id);
-//    }
-//	
 	
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/list")

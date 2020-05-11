@@ -28,9 +28,6 @@ public class AppointmentController {
 	
 	
 	@Autowired
-	private IAppointmentRepository iAppointmentRepository;
-	
-	@Autowired
 	private AppointmentService service;
 	
 	/**********************************Making of appointment*************************************/
@@ -91,18 +88,6 @@ public class AppointmentController {
 	 
 	/*********************************************Auto insertion *****************************************/
 	
-//	@PostMapping("/saveAppointment")
-//	public List<Appointment> saveProduct(@RequestBody Appointment prod)
-//	{
-//		
-//    	java.sql.Timestamp ts = AppointmentController.getCurrentTimeStamp() ;			
-//		Appointment appointment = new Appointment("U14",ts,"Da4C12","D4CT25",0);
-//		iAppointmentRepository.save(appointment);
-//		
-//		List<Appointment> app =iAppointmentRepository.findAll();
-//		return app;
-//	}
-//	
 	private static java.sql.Timestamp getCurrentTimeStamp()
 	{
 		java.util.Date today = new java.util.Date();
