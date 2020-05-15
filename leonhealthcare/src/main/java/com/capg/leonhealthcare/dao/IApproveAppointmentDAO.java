@@ -20,8 +20,8 @@ public interface IApproveAppointmentDAO {
 	public List<Appointment> getAppointment();
 	public List<Appointment> getAppointmentById(BigInteger id);
 	
-	public void approveAppointment(String appId);
-	public void disApproveAppointment(String appId);
+	public int approveAppointment(BigInteger appId);
+	public void disApproveAppointment(BigInteger appId);
 	
 	public List<User> getUser();
 	public List<User> getUserById(String id);

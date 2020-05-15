@@ -1,16 +1,20 @@
 package com.capg.leonhealthcare.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="test")
+@Table(name="test_f")
 public class Test {
 
 	@Id
+	@Column(name="test_id")
 	private String testId;
+	@Column(name="test_name")
 	private String testName;
+	@Column(name="center_id")
 	private String centerId;
 	
 	public String getTestId() {

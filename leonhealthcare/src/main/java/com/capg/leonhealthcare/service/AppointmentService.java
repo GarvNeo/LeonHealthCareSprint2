@@ -2,20 +2,12 @@ package com.capg.leonhealthcare.service;
 
 import java.math.BigInteger;
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ModelAttribute;
-
-import com.capg.leonhealthcare.controller.AppointmentController;
 import com.capg.leonhealthcare.dao.AppointmentDAOService;
 import com.capg.leonhealthcare.entity.Appointment;
-import com.capg.leonhealthcare.repository.IAppointmentRepository;
 
 @Service
 public class AppointmentService implements IAppointmentService{
@@ -23,12 +15,11 @@ public class AppointmentService implements IAppointmentService{
 	@Autowired
 	private AppointmentDAOService appointmentDAOService; 
 	
-
 	/**************************************** Making of appointment***************************** ***************************/
 	
 	public Appointment saveAppointmentss(Appointment app) {
 		
-		
+		System.out.println("before checkavlbilty");
 		if(checkSlotAvailibility(app.getDateTime()))
 		{
 			return appointmentDAOService.saveAppointments(app);
@@ -74,16 +65,21 @@ public class AppointmentService implements IAppointmentService{
 	
 	public boolean checkSlotAvailibility(Timestamp dateTimeCurrent)
 	{
-		
+		System.out.println("inside check 1");
 		List<Appointment> appointment = appointmentDAOService.showAppointments();
-		
+
+		System.out.println("inside check 2");
+		int c=0;
 		for(Appointment old_appointment : appointment)
 		{
+			System.out.println((++c)+ " "+old_appointment.getAppointmentId());
 			if(old_appointment.getDateTime().equals(dateTimeCurrent))
-			{
+			{			
+				System.out.println("doind");
 				return false;
 			}
 		}
+		System.out.println("do");
 		return true;
 	}
 
@@ -102,7 +98,5 @@ public class AppointmentService implements IAppointmentService{
 	{	
 		return appointmentDAOService.cancelAppointmentById(app_id);
 	}
-	
-
 	
 }

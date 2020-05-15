@@ -24,6 +24,11 @@ public class TestDAO implements  ITestDAO{
 	public List<Test> getTest(String id){
 		return repository.getTestById(id);		
 	}
+	
+	@Override
+	public List<Test> getAllTestOfCenter(String id){
+		return repository.getAllTestOfCenter(id);		
+	}
 	@Override
 	public int deleteTest(String id){
 		return repository.deleteTestById(id);		

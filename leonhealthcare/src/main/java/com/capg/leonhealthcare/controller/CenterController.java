@@ -3,6 +3,7 @@ package com.capg.leonhealthcare.controller;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,7 +16,7 @@ import com.capg.leonhealthcare.entity.DiagnosticCenter;
 import com.capg.leonhealthcare.service.ICenterService;
 
 
-
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RestController
 public class CenterController {
     @Autowired
@@ -32,7 +33,7 @@ public class CenterController {
 	throws ResourceNotFoundException
 	{	
 		List<DiagnosticCenter> center_list = service.getAllCenter();
-		
+		System.out.println("yes inside ");
 		if(center_list == null)
 		{
 			throw new ResourceNotFoundException("No Records Available ");
@@ -52,19 +53,19 @@ public class CenterController {
     	}
     return list;
     }
+    
 //	********************************************* Delete Center By Id *************************************
     
     @GetMapping("/delete_center_by_id/{id}")
     public String deleteCenterById(@PathVariable(value = "id") String id){
         int res = service.deleteCenters(id);
+        System.out.println("Hey their.....");
         if(res == 1) 
         {
         	return "Center deleted successfully";
         }
         else
         	return "deletion not successful";
-		
     }
     
-
 }

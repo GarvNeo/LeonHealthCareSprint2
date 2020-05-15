@@ -41,12 +41,13 @@ public class ApproveAppointmentService implements IApproveAppointmentService{
 	
 
 	@Override
-	public void approveAppointment(String appId) {
-		appointmentDAO.approveAppointment(appId);
+	public int approveAppointment(BigInteger appId) {
+		return appointmentDAO.approveAppointment(appId);
 		
 	}
+	
 	@Override
-	public void disApproveAppointment(String appId) {
+	public void disApproveAppointment(BigInteger appId) {
 		appointmentDAO.disApproveAppointment(appId);
 	}
 
@@ -115,5 +116,5 @@ public class ApproveAppointmentService implements IApproveAppointmentService{
 	public List<DiagnosticCenter> getDiagnosticCenterById(String id) {
 		return appointmentDAO.getDiagnosticCenterById(id);
 	}
-
+	
 }

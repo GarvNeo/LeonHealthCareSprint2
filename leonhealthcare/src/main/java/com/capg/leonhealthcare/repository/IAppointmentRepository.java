@@ -11,8 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.capg.leonhealthcare.entity.*;
 
-
-
 @Repository
 public interface IAppointmentRepository extends JpaRepository<Appointment,BigInteger>{
 	
@@ -22,8 +20,9 @@ public interface IAppointmentRepository extends JpaRepository<Appointment,BigInt
 	public int deleteAppointment(BigInteger id);
 	
 	@Transactional
-	@Query(nativeQuery =true,value="update APPOINTMENT a set a.status='rejected' "
-			+ "where a.datetime>current_timestamp and a.status='pending'")
+	@Modifying
+	@Query(nativeQuery =true,value="update APPOINTMENT_f a set a.status='rejected' "
+			+ "where a.date_Time<current_timestamp and a.status='pending'")
 	public void automaticallyReject();
 	
 	@SuppressWarnings("rawtypes")
@@ -64,15 +63,15 @@ public interface IAppointmentRepository extends JpaRepository<Appointment,BigInt
 	
 	@Transactional
 	@Modifying
-    @Query(nativeQuery =true, value="Update Appointment a SET a.status='approved' WHERE "
-    		+ "a.status='pending' and a.appointmentId =:appId")
-	public void approveAppointment(@Param("appId") String appId);
+    @Query(nativeQuery =true, value= "Update Appointment_f a SET a.status='approved' WHERE "
+    		+ "a.status='pending' and a.appointment_Id = ?1")
+	public int approveAppointment( BigInteger appId);
 	
 	@Transactional
 	@Modifying
-    @Query(nativeQuery =true, value="Update Appointment a SET a.status='rejected' WHERE"
-    		+ " a.appointmentId =:appId")
-	public void disapproveAppointment(@Param("appId") String appId);
+    @Query(nativeQuery =true, value="Update Appointment_f a SET a.status='rejected' WHERE"
+    		+ " a.appointment_Id =:appId")
+	public void disapproveAppointment(@Param("appId") BigInteger appId);
 	
 	@SuppressWarnings("rawtypes")
 	@Query("select a.appointmentId,a.status, t.testId,t.testName,"
@@ -81,5 +80,4 @@ public interface IAppointmentRepository extends JpaRepository<Appointment,BigInt
 			+ ",DiagnosticCenter c WHERE a.testId = t.testId and a.userId=u.userId"
 			+ " and a.centerId=c.centerId and u.userId=:userId")
 	public List findAppointmentDetailsByUserID (@Param("userId") String userId);
-	
 }

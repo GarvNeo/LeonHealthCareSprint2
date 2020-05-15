@@ -20,5 +20,7 @@ public interface ITestRepository extends JpaRepository<Test, String>{
 	@Query("delete from Test t where t.testId=?1")
 	public int deleteTestById(String id);
 	
+	@Query("select t from Test t where t.centerId=?1")
+	public List<Test> getAllTestOfCenter(String id);
 	
 }

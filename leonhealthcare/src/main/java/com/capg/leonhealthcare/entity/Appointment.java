@@ -10,15 +10,20 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="appointment")
+@Table(name="appointment_f")
 public class Appointment {
 
 	@Id
 	@GeneratedValue
+	@Column(name="appointment_id")
 	private BigInteger appointmentId;
+	@Column(name="user_id")
 	private String userId;
+	@Column(name="date_time")
 	private Timestamp dateTime;
+	@Column(name="test_id")
 	private String testId;
+	@Column(name="center_id")
 	private String centerId;
 	@Column(columnDefinition = "varchar(255) default 'pending'")
 	private String status;

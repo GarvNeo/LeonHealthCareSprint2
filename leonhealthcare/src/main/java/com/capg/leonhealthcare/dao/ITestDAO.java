@@ -14,5 +14,5 @@ public interface ITestDAO {
 
 	Test addTest(Test test);
 
-	
+	List<Test> getAllTestOfCenter(String id);
 }

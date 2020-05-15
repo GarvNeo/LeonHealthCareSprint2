@@ -2,17 +2,21 @@ package com.capg.leonhealthcare.entity;
 
 import java.math.BigInteger;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="diagnostic_center")
+@Table(name="diagnostic_center_f")
 public class DiagnosticCenter {
 
 	@Id
+	@Column(name="center_id")
 	private String centerId;
+	@Column(name="center_name")
 	private String centerName;
+	@Column(name="contact_no")
 	private BigInteger contactNo;
 	private String address;
 	/*private List<Test> listOfTests;

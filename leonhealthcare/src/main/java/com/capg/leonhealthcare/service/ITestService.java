@@ -10,8 +10,9 @@ public interface ITestService{
 
 	List<Test> getTests(String id);
 
-	public int deleteTests(String id);
+	int deleteTests(String id);
 
-	public Test addTests(Test test);
+    Test addTests(Test test);
 
+    List<Test> getAllTestOfCenter(String id);
 }

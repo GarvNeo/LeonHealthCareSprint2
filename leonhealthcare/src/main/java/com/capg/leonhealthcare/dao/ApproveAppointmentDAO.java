@@ -53,12 +53,12 @@ public class ApproveAppointmentDAO implements IApproveAppointmentDAO{
 	
 
 	@Override
-	public void approveAppointment(String appId) {
-		appointmentRepository.approveAppointment(appId);
+	public int approveAppointment(BigInteger appId) {
+		return appointmentRepository.approveAppointment(appId);
 		
 	}
 	@Override
-	public void disApproveAppointment(String appId) {
+	public void disApproveAppointment(BigInteger appId) {
 		appointmentRepository.disapproveAppointment(appId);
 	}
 

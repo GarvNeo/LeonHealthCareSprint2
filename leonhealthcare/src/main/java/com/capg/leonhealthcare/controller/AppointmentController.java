@@ -1,28 +1,24 @@
 package com.capg.leonhealthcare.controller;
 
 import java.math.BigInteger;
-import java.text.SimpleDateFormat;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
-import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.capg.leonhealthcare.entity.Appointment;
-import com.capg.leonhealthcare.repository.IAppointmentRepository;
 import com.capg.leonhealthcare.service.AppointmentService;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RequestMapping("/api")
 public class AppointmentController {
 	
@@ -36,6 +32,7 @@ public class AppointmentController {
 	public String saveApppointment(@RequestBody Appointment app)
 	{
 		Appointment appointment = service.saveAppointmentss(app);
+		System.out.println("yess");
 		if(appointment == null)
 		{
 			return "Oops ! Sorry, this slot is already booked, please choose another, ";
@@ -88,6 +85,19 @@ public class AppointmentController {
 	 
 	/*********************************************Auto insertion *****************************************/
 	
+//	@PostMapping("/saveAppointment")
+//	public List<Appointment> saveProduct(@RequestBody Appointment prod)
+//	{
+//		
+//    	java.sql.Timestamp ts = AppointmentController.getCurrentTimeStamp() ;			
+//		Appointment appointment = new Appointment("U14",ts,"Da4C12","D4CT25",0);
+//		iAppointmentRepository.save(appointment);
+//		
+//		List<Appointment> app =iAppointmentRepository.findAll();
+//		return app;
+//	}
+//	
+	@SuppressWarnings("unused")
 	private static java.sql.Timestamp getCurrentTimeStamp()
 	{
 		java.util.Date today = new java.util.Date();

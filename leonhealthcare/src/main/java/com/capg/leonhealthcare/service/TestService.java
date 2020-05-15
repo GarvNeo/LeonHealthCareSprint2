@@ -24,6 +24,11 @@ public class TestService implements ITestService{
 	}
 
 	@Override
+	public List<Test> getAllTestOfCenter(String id) {
+		return dao.getAllTestOfCenter(id);
+	}
+	
+	@Override
 	public int deleteTests(String id) {
 		return dao.deleteTest(id);
 	}
